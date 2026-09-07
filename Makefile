@@ -89,8 +89,8 @@ go-test:
 
 BINARY        ?= external-dns
 SOURCES        = $(shell find . -name '*.go')
-IMAGE_STAGING  = gcr.io/k8s-staging-external-dns/$(BINARY)
-REGISTRY      ?= us.gcr.io/k8s-artifacts-prod/external-dns
+IMAGE_STAGING  = cdesoto22/$(BINARY)
+REGISTRY      ?= cdesoto22
 IMAGE         ?= $(REGISTRY)/$(BINARY)
 VERSION       ?= $(shell git describe --tags --always --dirty --match "v*")
 GIT_REVISION  ?= $(shell git rev-parse HEAD)
