@@ -7,14 +7,14 @@ You might want to ask in our Slack channel [external-dns](https://kubernetes.sla
 
 ## Staging Release cycle
 
-A new staging image is released weekly and can be found at [gcr.io/k8s-staging-external-dns/external-dns](https://console.cloud.google.com/gcr/images/k8s-staging-external-dns/GLOBAL/external-dns?pli=1&inv=1&invt=AboL6Q).
+A new staging image is released weekly and can be found on [the official staging registry](https://console.cloud.google.com/artifacts/docker/k8s-staging-external-dns/us/gcr.io/external-dns?project=k8s-staging-external-dns).
 
 > There is a time lag between merging changes into the master branch and the subsequent creation of the staging image.
 
 Example command to fetch `10` most recent staging images:
 
 ```sh
-export EXT_DNS_VERSION="v0.21.0"
+export EXT_DNS_VERSION="v0.22.0"
 curl -sLk https://gcr.io/v2/k8s-staging-external-dns/external-dns/tags/list | jq | grep "$EXT_DNS_VERSION" | tail -n 10
 ```
 

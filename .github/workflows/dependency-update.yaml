@@ -3,10 +3,10 @@ name: update-versions-with-renovate
 on:
   push:
     branches: [main, master]
-  schedule:
-    # https://crontab.guru/
-    # once a day
-    - cron: '0 0 * * *'
+  # schedule:
+  #   # https://crontab.guru/
+  #   # once a day
+  #   - cron: '0 0 * * *'
 
 permissions: {}
 
