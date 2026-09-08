@@ -92,13 +92,13 @@ SOURCES        = $(shell find . -name '*.go')
 IMAGE_STAGING  = cdesoto22/$(BINARY)
 REGISTRY      ?= cdesoto22
 IMAGE         ?= $(REGISTRY)/$(BINARY)
-VERSION       ?= $(shell git describe --tags --always --dirty --match "v*")
+VERSION       ?= v0.22.0
 GIT_REVISION  ?= $(shell git rev-parse HEAD)
 GIT_COMMIT    ?= $(shell git rev-parse --short HEAD)
 GIT_COMMIT    := $(or $(GIT_COMMIT),$(shell echo "$(GIT_REVISION)" | cut -c1-7))
 BUILD_FLAGS   ?= -v
-LDFLAGS       ?= -X sigs.k8s.io/external-dns/pkg/apis/externaldns.Version=$(VERSION) -w -s
-LDFLAGS       += -X sigs.k8s.io/external-dns/pkg/apis/externaldns.GitCommit=$(GIT_COMMIT)
+LDFLAGS       ?= -X chrisdesoto/external-dns/pkg/apis/externaldns.Version=$(VERSION) -w -s
+LDFLAGS       += -X chrisdesoto/external-dns/pkg/apis/externaldns.GitCommit=$(GIT_COMMIT)
 ARCH          ?= amd64
 SHELL          = /bin/bash
 IMG_PLATFORM  ?= linux/amd64,linux/arm64,linux/arm/v7
@@ -114,7 +114,7 @@ build.push/multiarch: ko
 	KO_DOCKER_REPO=${IMAGE} \
 	VERSION=${VERSION} \
 	ko build --tags ${VERSION} --bare --sbom ${IMG_SBOM} \
-		--image-label org.opencontainers.image.source="https://github.com/kubernetes-sigs/external-dns" \
+		--image-label org.opencontainers.image.source="https://github.com/chrisdesoto/external-dns" \
 		--image-label org.opencontainers.image.revision=$(GIT_REVISION) \
 		--platform=${IMG_PLATFORM}  --push=${IMG_PUSH} .
 
